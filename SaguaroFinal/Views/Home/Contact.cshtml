@@ -1,0 +1,100 @@
+﻿@model SaguaroFinal.Models.ContactViewModels
+
+@{
+    ViewBag.Title = "Contacto";
+}
+<html lang="es">
+
+<div class="container">
+    <div class="row">
+        <div class="box">
+            <div class="col-md-6">
+                <h2>@ViewBag.Title.</h2>
+                <div>
+                    <address style="font-family" Helvetica"; ">
+                    Facebook : <a href=" https//www.facebook.com/Saguaro-Modas-1621805528070379/" target="_blank">Saguaro Modas </a><br />
+                    Telefono : 356 450-6148<br />
+                    Horarios: De lunes a sábados de 8:00 hs a 12:00 hs por la mañana  y por la tarde de 16:30 a 20:30.<br />
+                    Juan de Garay 2640<br />
+                    San Francisco, Córdoba, 2400<br />
+                    </address>
+
+                </div>
+                <div>
+                    <div>
+                        @if (ViewBag.Message == null)
+                        {
+                            <div>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Name,"Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Subject,"Asunto", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Message,"Mensaje", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button type="submit"
+                                                    class="btn btn-success">
+                                                Enviar
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <div>
+                        <div>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-success">
+                                    <strong>¡Gracias!</strong> @ViewBag.Message
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.8003995414188!2d-62.095683585243066!3d-31.419624981403015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cb283990155edd%3A0x7f29b6442bd645ea!2sAv.+Juan+de+Garay+2640%2C+San+Francisco%2C+C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1539222337264" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</html>
